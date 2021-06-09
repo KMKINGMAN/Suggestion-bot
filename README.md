@@ -1,4 +1,4 @@
-<h1 align="center">BlackList System</h1>
+<h1 align="center">Suggestions Bot</h1>
 <p align="center">
   <img style="border-radius:50%;" width="300" height="300" src="https://e.top4top.io/p_1965qprez1.gif" alt="MeCodes Logo">
 </p>
