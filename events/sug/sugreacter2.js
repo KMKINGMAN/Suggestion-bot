@@ -25,7 +25,7 @@ module.exports = {
 	async execute(reaction, user, client) {
     let gdata = await st.findOne({GuildID:reaction.message.guild.id})
     if(!gdata) return;
-    if(!reaction.emoji === '✅' || reaction.emoji === '❌') return;
+    if(!reaction.emoji.name === '✅' || reaction.emoji.name === '❌') return;
     if(user.bot) return;
     //console.log(reaction.message.id)
     let data = await sug.findOne({MsgID:reaction.message.id})
