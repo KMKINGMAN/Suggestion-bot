@@ -23,6 +23,9 @@ const st = require('../../me-modals/sug/sugst')
 module.exports = {
 	name: 'messageReactionRemove',
 	async execute(reaction, user, client) {
+    if(user.partial) await user.fetch();
+    if(reaction.partial) await reaction.fetch();
+    if(reaction.message.partial) await reaction.message.fetch(); 
     let gdata = await st.findOne({GuildID:reaction.message.guild.id})
     if(!gdata) return;
     if(!reaction.emoji.name === '✅' || reaction.emoji.name === '❌') return;
