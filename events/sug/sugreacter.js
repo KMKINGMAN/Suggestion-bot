@@ -30,7 +30,7 @@ module.exports = {
     if(!gdata) return;
     if(!reaction.emoji.name === '✅' || reaction.emoji.name === '❌') return;
     if(user.bot) return;
-    console.log(reaction.message.id)
+    //console.log(reaction.message.id)
     let data = await sug.findOne({MsgID:reaction.message.id})
     if(!data) return;
     let es = new MessageEmbed()
