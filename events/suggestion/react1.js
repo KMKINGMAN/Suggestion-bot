@@ -30,10 +30,10 @@ module.exports = {
       try {
         user.send({embeds: [es],  components: [row]}).catch(e=>{return})
       } catch(e) {
-        console.log(` `)
+        return
       }    
     } catch(e){
-
+      return
     }
   }
 }
