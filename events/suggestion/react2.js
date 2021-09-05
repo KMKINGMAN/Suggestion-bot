@@ -26,7 +26,7 @@ module.exports = {
         let es = new MessageEmbed()
         .setAuthor(user.tag, user.avatarURL({ dynamic: true, size: 1024 }))
         .setColor('BLUE')
-        .setDescription(`**Thank you for using our suggestion bot you remove your reaction [${reaction.emoji}] to <@${data.UserID}> suggestion**\n **[MESSAGE](https://discord.com/channels/${reaction.message.guild.id}/${reaction.message.channel.id}/${data.MsgID})**`)
+        .setDescription(`**Thank you for using our suggestion bot you add reaction reaction [${reaction.emoji}] to <@${data.UserID}> suggestion**\n **[MESSAGE](https://discord.com/channels/${reaction.message.guild.id}/${reaction.message.channel.id}/${data.MsgID})**`)
         .setFooter(reaction.message.guild.name, client.user.avatarURL({ dynamic: true, size: 1024 }))
         try {
           user.send({embeds: [es],  components: [row]})
