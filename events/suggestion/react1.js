@@ -28,7 +28,7 @@ module.exports = {
       .setDescription(`**Thank you for using our suggestion bot you remove your reaction [${reaction.emoji}] to <@${data.UserID}> suggestion**\n **[MESSAGE](https://discord.com/channels/${reaction.message.guild.id}/${reaction.message.channel.id}/${data.MsgID})**`)
       .setFooter(reaction.message.guild.name, client.user.avatarURL({ dynamic: true, size: 1024 }))
       try {
-        user.send({embeds: [es],  components: [row]}).catch(e=>{})
+        user.send({embeds: [es],  components: [row]}).catch(e=>{return})
       } catch(e) {
         console.log(` `)
       }    
