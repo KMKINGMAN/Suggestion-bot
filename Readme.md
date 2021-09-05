@@ -10,7 +10,7 @@ Feel free to add a star ⭐ to the repository to promote the project!
 
 ### Many commands
 
-KINGMAN DEV BOT has a lot of features
+KINGMAN SUGGESTION BOT has a lot of features
 
 - [x] Supports slash command
 - [x] Suggestion in a new and simple way
