@@ -1,0 +1,30 @@
+{
+  "name": "KINGMAN_SUGGESTION_BOT",
+  "version": "2.5.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "KINGMAN_SUGGESTION_BOT",
+    "KINGMAN_DEV",
+    "discord.js",
+    "discord_bot",
+    "suggestion_bot"
+  ],
+  "author": "muhammad rafat kurkar [+962792914245] kingmandev_owner",
+  "license": "GNU",
+  "devDependencies": {
+    "node": "^16.6.1"
+  },
+  "dependencies": {
+    "ascii-table": "0.0.9",
+    "colors": "^1.4.0",
+    "discord.js": "^13.1.0",
+    "express": "^4.17.1",
+    "figlet": "^1.5.2",
+    "mongoose": "^5.0.4"
+  }
+}
