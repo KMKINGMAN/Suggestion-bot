@@ -21,7 +21,7 @@ module.exports = {
     channel = interaction.guild.channels.cache.get(data.value)
     if(channel.type !== "GUILD_TEXT"){
       return interaction.reply({
-        embeds: [err('The channel must be text channel')]
+        embeds: [err('The channel must be a text channel')]
       })
     }
     let x = await GUILDMODAL.findOneAndUpdate({
@@ -40,7 +40,7 @@ module.exports = {
     }
     x.save()
     interaction.reply({
-      embeds: [send (`The Channel has been Saved!`, `**Suggestions Channel Updated to <#${channel.id}>**`)]
+      embeds: [send (`Channel saved!`, `** Suggestions channel has been updated to <#${channel.id}>**`)]
     })
   }
 }
