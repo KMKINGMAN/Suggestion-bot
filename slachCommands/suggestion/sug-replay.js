@@ -31,7 +31,7 @@ module.exports = {
     });
     if(!GuildData){
       return interaction.reply({
-        embeds : [err('Please SetUp Suggestion Channel')]
+        embeds : [err('Please set up a suggestion channel')]
       })
     }
     if(!GuildData || !interaction.guild.channels.cache.get(GuildData.ChannelID)){
@@ -42,20 +42,20 @@ module.exports = {
     })
     if(!UserData){
       return interaction.reply({
-        embeds : [err('invild message id')]
+        embeds : [err('Invalid message id')]
       })
     }
     let Chnnel = interaction.guild.channels.cache.get(GuildData.ChannelID)
     if(!Chnnel){
       return interaction.reply({
-        embeds : [err('Please SetUp Suggestion Channel')]
+        embeds : [err('Please set up a suggestion channel')]
       }) 
     }
     let message = await Chnnel
     .messages.fetch(UserData.MsgID).catch(e => {})
     if(!message){
       return await interaction.reply({
-         embeds : [err('I cant find Suggestion channel')]
+         embeds : [err('I can\'t find Suggestion channel')]
       })
     }
     await UserData.Replay.push({
@@ -64,17 +64,17 @@ module.exports = {
       "Replay": replay.value
     })
     UserData.save()
-    let reps = UserData.Replay.map((D) => `**Admine: <@${D.Admine}>\nReplay: \`${D.Replay}\`**`),
+    let reps = UserData.Replay.map((D) => `**Admin: <@${D.Admine}>\nReply: \`${D.Replay}\`**`),
     name = interaction.member.user
 .tag,
     name2 = client.users.cache.get(UserData.UserID).tag,
     ava = client.users.cache.get(UserData.UserID).displayAvatarURL()
     let embed = new MessageEmbed()
     .setAuthor(`${name2}`, ava)
-    .setTitle(`**[✅] Replay**`)
+    .setTitle(`**[✅] Reply**`)
     .setColor(`GREEN`)
     .setDescription(`**${UserData.Sug}**`)
-    .addField(`**Replyes **`,reps.join('\n'))
+    .addField(`**replies **`,reps.join('\n'))
     message.edit({embeds : [embed]});
     /////
      const row = new MessageActionRow()
@@ -85,13 +85,13 @@ module.exports = {
         .setURL(`https://discord.com/channels/${interaction.guild.id}/${Chnnel.id}/${UserData.MsgID}`)
     );
     await interaction.reply({
-      embeds: [send('Added New Replay', 'New Replay Were Added ' + replay.value)],
+      embeds: [send('Added New Reply', 'New Reply Were Added ' + replay.value)],
       components: [row]
     })
     let nc = new MessageEmbed()
     .setAuthor(`${name2}`, ava)
     .setTitle(`**[✅] Some admin replay to your suggesion**`)
-    .setDescription(`**\`${name}\` Replay to Your Suggestion**\n**REPLAY: \`${replay.value}\`\n[Click Here](https://discord.com/channels/${interaction.guild.id}/${Chnnel.id}/${UserData.MsgID})**`)
+    .setDescription(`**\`${name}\` Reply to Your Suggestion**\n**REPLAY: \`${replay.value}\`\n[Click Here](https://discord.com/channels/${interaction.guild.id}/${Chnnel.id}/${UserData.MsgID})**`)
     let user = interaction.guild.members.cache.get(UserData.UserID)
     user.send({embeds: [nc], components: [row]}).catch((e) =>{})
   }
