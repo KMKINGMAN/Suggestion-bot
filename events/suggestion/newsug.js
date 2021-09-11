@@ -8,9 +8,8 @@ PREFIX = config.prefix;
 module.exports = {
 	name: 'messageCreate',
   async execute(kmsg, client) {
-    if (kmsg.content.startsWith(PREFIX)) return;
+    if (kmsg.content.startsWith(PREFIX)||kmsg.content.startsWith("/")) return;
     if(kmsg.author.bot) return;
-    //console.log(kmsg)
     let GuildData = await GUILDMODAL.findOne({
       GuildID: kmsg.guild.id
     }),
