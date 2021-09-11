@@ -15,7 +15,7 @@ module.exports = {
     client.user.setPresence({
       status: 'online',
       activities:[{
-        name:'KINGMAN SYSTEM BOT',
+        name:'/help KINGMAN SUG BOT',
         type:'STREAMING',
         url: 'https://www.twitch.tv/kingman4hack'
       }]
