@@ -14,7 +14,7 @@ GUILDMODAL = require('../../Modals/suggestion/main')
     }
     let ch = await KMSG.GetChannel(args[0])
     if(ch.type !== "GUILD_TEXT"){
-      return KMSG.ERR('The channel must be text channel')
+      return KMSG.ERR('The channel must be a text channel')
     }
     if(!ch){
       return KMSG.ERR(`You must specify the Channel\n Usage: \`${PREFIX}${module.exports.name} <channel>\``)
@@ -34,6 +34,6 @@ GUILDMODAL = require('../../Modals/suggestion/main')
       })
     }
     x.save()
-    await KMSG.SEND(`The Channel has been Saved!`, `**Suggestions Channel Updated to <#${ch.id}>**`)
+    await KMSG.SEND(`Channel saved!`, `**Suggestions channel has been updated to <#${ch.id}>**`)
     }
  }
