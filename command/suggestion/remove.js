@@ -15,7 +15,7 @@ USERSMODAL = require('../../Modals/suggestion/users')
     }
       let mesgid = args[0]
       if(!mesgid) {
-        return await KMSG.ERR(`You must specify the message id`)
+        return await KMSG.ERR(`You must specify the message ID`)
       }
       let data = await USERSMODAL.findOne({MsgID:mesgid})
       if(!data) {
@@ -27,11 +27,11 @@ USERSMODAL = require('../../Modals/suggestion/users')
       }
       let channel = kmsg.guild.channels.cache.get(setting.ChannelID);
       if(!channel) {
-        return KMSG.ERR(`The Suggestion channel was not found`)
+        return KMSG.ERR(`Suggestion channel not found`)
       }
       let msg = await channel.messages.fetch(data.MsgID).catch(e => {})
         msg.delete();
         data.deleteOne();
-        await KMSG.SEND(`Databace Updated`,`Suggestion removed successfully`)
+        await KMSG.SEND(`Deleted successfully`,`Suggestion removed successfully`)
     }
  }
