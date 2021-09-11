@@ -2,10 +2,10 @@ const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js"),
 GUILDMODAL = require('../../Modals/suggestion/main'),
 USERSMODAL = require('../../Modals/suggestion/users')
  module.exports = {
-   name: "sug-replay",
+   name: "sug-reply",
    category: "suggenstion",
    usage: [
-     "[message id] [replay]"
+     "[message id] [reply]"
    ],
    description: "to set suggestion channel",
    run: async(client, kmsg, args, PREFIX, KMSG)=>{
@@ -18,33 +18,33 @@ USERSMODAL = require('../../Modals/suggestion/users')
       GuildID: kmsg.guild.id
     });
     if(!GuildData || !kmsg.guild.channels.cache.get(GuildData.ChannelID)){
-      return await KMSG.ERR("Please SetUp Suggestion Channel")
+      return await KMSG.ERR("Please set up a suggestion channel")
     }
     if(!args[0]){
-      return await KMSG.ERR("Please insert message id")
+      return await KMSG.ERR("Please enter message ID")
     }
     if(!replay){
-      return await KMSG.ERR("Please insert the Replay")
+      return await KMSG.ERR("Please enter a reply")
     }
     let UserData = await USERSMODAL.findOne({
       MsgID : args[0]
     })
     if(!UserData){
-      return await KMSG.ERR("invailde message id")
+      return await KMSG.ERR("Invalid message id")
     }
     let Chnnel = kmsg.guild.channels.cache.get(GuildData.ChannelID)
     if(!Chnnel) return;
     let message = await Chnnel
     .messages.fetch(UserData.MsgID).catch(E => {return})
     if(!message){
-      return await KMSG.ERR("i can't Find This Message")
+      return await KMSG.ERR("i can't find this messagee")
     }
     await UserData.Replay.push({
       "Admine": kmsg.author.id,
       "Replay": replay
     })
     UserData.save()
-    let reps = UserData.Replay.map((D) => `**Admine: <@${D.Admine}>\nReplay: \`${D.Replay}\`**`),
+    let reps = UserData.Replay.map((D) => `**Admin: <@${D.Admine}>\nReply: \`${D.Replay}\`**`),
     name = kmsg.author.tag,
     name2 = client.users.cache.get(UserData.UserID).tag,
     ava = client.users.cache.get(UserData.UserID).displayAvatarURL()
@@ -53,7 +53,7 @@ USERSMODAL = require('../../Modals/suggestion/users')
     .setTitle(`**[✅] Replay**`)
     .setColor(`GREEN`)
     .setDescription(`**${UserData.Sug}**`)
-    .addField(`**Replyes **`,reps.join('\n'))
+    .addField(`**Replies**`,reps.join('\n'))
     message.edit({embeds : [embed]});
    const row = new MessageActionRow()
     .addComponents(
@@ -66,7 +66,7 @@ USERSMODAL = require('../../Modals/suggestion/users')
     let nc = new MessageEmbed()
     .setAuthor(`${name2}`, ava)
     .setTitle(`**[✅] Some admin replay to your suggesion**`)
-    .setDescription(`**\`${name}\` Replay to Your Suggestion**\n**REPLAY: \`${replay}\`\n[Click Here](https://discord.com/channels/${kmsg.guild.id}/${Chnnel.id}/${UserData.MsgID})**`)
+    .setDescription(`**\`${name}\` Reply to your suggestion **\n**REPLAY: \`${replay}\`\n[Click Here](https://discord.com/channels/${kmsg.guild.id}/${Chnnel.id}/${UserData.MsgID})**`)
     let user = kmsg.guild.members.cache.get(UserData.UserID)
     user.send({embeds: [nc], components: [row]}).catch((e) =>{})
     }
